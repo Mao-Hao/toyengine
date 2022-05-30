@@ -58,6 +58,9 @@
     <ClInclude Include="TriRenderComponent.hpp">
       <Filter>src\test</Filter>
     </ClInclude>
+    <ClInclude Include="Timer.hpp">
+      <Filter>src\core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader-test.vert">
@@ -66,5 +69,8 @@
     <None Include="shader-test.frag">
       <Filter>src\test</Filter>
     </None>
+    <None Include="..\.gitattributes" />
+    <None Include="..\.gitignore" />
+    <None Include="..\README.md" />
   </ItemGroup>
 </Project>

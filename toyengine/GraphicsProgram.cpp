@@ -1,8 +1,14 @@
+#pragma comment(lib, "winmm.lib") // timeBeginPeriod
+#include <Windows.h> // Include windows.h before glad. to avoid macro redefinition
+
 #include "GraphicsProgram.hpp"
+#include "Timer.hpp"
 
 #include <iostream>
 #include <sstream>
 #include <time.h>
+
+
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -13,7 +19,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 }
 
 GraphicsProgram::GraphicsProgram(std::shared_ptr<Level> level)
-   : mLevel(level)
+    : mLevel(level)
 {
     // Initialize random number generation.
     srand((unsigned int)time(nullptr));
@@ -40,6 +46,8 @@ GraphicsProgram::GraphicsProgram(std::shared_ptr<Level> level)
     glfwMakeContextCurrent(mWindow);
     glfwSetFramebufferSizeCallback(mWindow, framebuffer_size_callback);
 
+	glfwSwapInterval(0);
+
     // glad: load all OpenGL function pointers
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         errorStream << "Failed to initialize GLAD\n";
@@ -53,6 +61,8 @@ GraphicsProgram::GraphicsProgram(std::shared_ptr<Level> level)
     } else {
         std::cout << "No OpenGL errors Detected during init\n\n";
     }
+
+    timeBeginPeriod(1);	
 }
 
 GraphicsProgram::~GraphicsProgram()
@@ -70,7 +80,7 @@ void GraphicsProgram::render()
 {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    
+
     mLevel->render();
 
     glfwSwapBuffers(mWindow);
@@ -83,7 +93,9 @@ void GraphicsProgram::loop()
     bool quit = false;
     // Event handler that handles various events that are related to input and output
     // While application is running
+    Timer timer(60u);
     while (!quit) {
+        auto startTicks = std::chrono::high_resolution_clock::now();
         // Handle events on queue
         glfwPollEvents();
 
@@ -98,5 +110,8 @@ void GraphicsProgram::loop()
         update();
         // Render
         render();
+
+        timer.update();
+        std::cout << std::fixed << std::setprecision(3) << "FPS: " << timer.avgFPS << std::endl;
     }
 }

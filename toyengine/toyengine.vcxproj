@@ -152,9 +152,13 @@
     <ClInclude Include="RenderComponent.hpp" />
     <ClInclude Include="ResourceManager.hpp" />
     <ClInclude Include="Shader.hpp" />
+    <ClInclude Include="Timer.hpp" />
     <ClInclude Include="TriRenderComponent.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\.gitattributes" />
+    <None Include="..\.gitignore" />
+    <None Include="..\README.md" />
     <None Include="shader-test.frag" />
     <None Include="shader-test.vert" />
   </ItemGroup>
