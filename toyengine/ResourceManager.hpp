@@ -38,5 +38,5 @@ public:
     }
 
 private:
-    std::map<std::string, Shader*> Sprites_;
+    std::map<std::string, Shader*> Shaders;
 };
