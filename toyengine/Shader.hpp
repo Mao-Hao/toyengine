@@ -13,7 +13,7 @@
 class Shader {
 public:
     // state
-    unsigned int ID;
+    GLuint ID;
     // constructor
     Shader()
         : ID(0)
@@ -55,7 +55,7 @@ public:
         const char* vShaderCode = vertexCode.c_str();
         const char* fShaderCode = fragmentCode.c_str();
         // 2. compile shaders
-        unsigned int vertex, fragment;
+        GLuint vertex, fragment;
         // vertex shader
         vertex = glCreateShader(GL_VERTEX_SHADER);
         glShaderSource(vertex, 1, &vShaderCode, NULL);
@@ -87,7 +87,7 @@ public:
     // compiles the shader from given source code
     void Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource = nullptr)
     {
-        unsigned int sVertex, sFragment, gShader;
+        GLuint sVertex, sFragment, gShader;
         // vertex Shader
         sVertex = glCreateShader(GL_VERTEX_SHADER);
         glShaderSource(sVertex, 1, &vertexSource, NULL);
