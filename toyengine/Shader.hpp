@@ -78,9 +78,10 @@ public:
     }
 
     // sets the current shader as active
-    void Use() const
+    Shader& Use()
     {
         glUseProgram(this->ID);
+        return *this;
     }
 
     // compiles the shader from given source code

@@ -16,7 +16,7 @@ public:
         glDeleteVertexArrays(1, &this->VAO);
     }
 
-    virtual void render() const override
+    virtual void render() override
     {
         const GameObject& gameObject = getGameObject();
         mShader.Use();

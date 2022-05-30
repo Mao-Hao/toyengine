@@ -13,7 +13,7 @@ public:
     
     }
 
-    virtual void render() const = 0; //!< Do the render.
+    virtual void render() = 0; //!< Do the render.
 	
 protected:
 	Shader mShader; //!< The shader to use.
