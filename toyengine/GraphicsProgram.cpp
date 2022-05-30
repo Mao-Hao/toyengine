@@ -1,8 +1,6 @@
-#pragma comment(lib, "winmm.lib") // timeBeginPeriod
-#include <Windows.h> // Include windows.h before glad. to avoid macro redefinition
+#include "Timer.hpp"
 
 #include "GraphicsProgram.hpp"
-#include "Timer.hpp"
 
 #include <iostream>
 #include <sstream>
@@ -61,8 +59,6 @@ GraphicsProgram::GraphicsProgram(std::shared_ptr<Level> level)
     } else {
         std::cout << "No OpenGL errors Detected during init\n\n";
     }
-
-    timeBeginPeriod(1);	
 }
 
 GraphicsProgram::~GraphicsProgram()

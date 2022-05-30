@@ -19,7 +19,7 @@ public:
         : ID(0)
     {
     }
-    // TODO: ·Åµ½ resource manager ÖÐ
+    // TODO: move it to resource manager
     Shader(const char* vertexPath, const char* fragmentPath)
     {
         // 1. retrieve the vertex/fragment source code from filePath

@@ -1,5 +1,8 @@
 #pragma once
 
+#pragma comment(lib, "winmm.lib") // timeBeginPeriod
+#include <Windows.h> // Include windows.h before glad. to avoid macro redefinition
+
 #include <chrono>
 #include <deque>
 #include <iomanip>
@@ -20,6 +23,8 @@ public:
      */
     Timer(size_t FPS_)
     {
+        timeBeginPeriod(1);	
+		
         FPS = FPS_;
         avgFPS = (float)FPS;
         ticksPerTime = (long long)(1000.0f / FPS);
@@ -30,7 +35,7 @@ public:
     /*!
      * Default destructor.
      */
-    ~Timer() { }
+    ~Timer() { timeEndPeriod(1); }
 
     /*!
      * Function that takes care of the computation of the elapsed ticks
